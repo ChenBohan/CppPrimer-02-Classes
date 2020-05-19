@@ -5,8 +5,7 @@
 
 int main() {
     Sales_data total;
-    if (read(std::cin, total))
-    {
+    if (read(std::cin, total)) {
         Sales_data trans;
         while (read(std::cin, trans)) {
             if (total.isbn() == trans.isbn())
@@ -17,9 +16,7 @@ int main() {
             }
         }
         print(std::cout, total) << std::endl;
-    }
-    else
-    {
+    } else {
         std::cerr << "No data?!" << std::endl;
         return -1;
     }
