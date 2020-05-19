@@ -13,3 +13,14 @@ Sales_data& Sales_data::combine(const Sales_data& rhs) {
 }
 ```
 
+### Exercise 7.9: Add operations to read and print Person objects to the code you wrote for the exercises in § 7.1.2 (p. 260).
+
+```
+std::ostream& print(std::ostream &os, const Person& person) {
+    return os << person.name << " " << person.address;
+}
+
+std::istream& read(std::istream &is, Person& person) {
+    return is >> person.name >> person.address;
+}
+```
