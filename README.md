@@ -71,3 +71,16 @@ while (is) {
     - Cons:
         - lessens encapsulation and therefore maintainability.
         - code verbosity, declarations inside the class, outside the class.
+
+### Exercise 7.21: Update your Sales_data class to hide its implementation. The programs you’ve written to use Sales_data operations should still continue to work.
+
+```cpp
+
+class Sales_data {
+    // To make a friend visible to users of the class, we usually declare each friend
+    // (outside the class) in the same header as the class itself.
+    friend std::istream &read(std::istream &is, Sales_data &item);
+    friend std::ostream &print(std::ostream &os, const Sales_data &item);
+    friend Sales_data add(const Sales_data &lhs, const Sales_data &rhs);
+    ...
+}
