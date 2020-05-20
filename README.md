@@ -100,3 +100,18 @@ using pos = std::string::size_type;
 - synthesized version doesn't work correctly
     - for classes that allocate resources that reside outside the class objects themselves.
 - Hence the class below which used only built-in type and strings can rely on the default version of copy and assignment.
+
+### Exercise 7.26: Define Sales_data::avg_price as an inline function.
+
+- member functions defined inside the class are automatically inline
+- Although we are not required to do so, it is legal to specify inline on both the
+declaration and the definition. specifying inline only on the definition outside the class can make the class easier to read.
+
+```cpp
+inline double avg_price() const;
+...
+inline double Sales_data::avg_price() const
+{
+    return units_sold ? revenue/units_sold : 0;
+}
+```
