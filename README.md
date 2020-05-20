@@ -83,3 +83,12 @@ class Sales_data {
     friend Sales_data add(const Sales_data &lhs, const Sales_data &rhs);
     ...
 }
+```
+
+### Exercise 7.23: Write your own version of the Screen class.
+
+```cpp
+// type members usually appear at the beginning of the class.
+// = typedef std::string::size_type pos;
+using pos = std::string::size_type;
+```
