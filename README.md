@@ -92,3 +92,11 @@ class Sales_data {
 // = typedef std::string::size_type pos;
 using pos = std::string::size_type;
 ```
+
+### Exercise 7.25: Can Screen safely rely on the default versions of copy and assignment? If so, why? If not, why not?
+
+- synthesized version work correctly
+    - for classes that have vector or string members.
+- synthesized version doesn't work correctly
+    - for classes that allocate resources that reside outside the class objects themselves.
+- Hence the class below which used only built-in type and strings can rely on the default version of copy and assignment.
