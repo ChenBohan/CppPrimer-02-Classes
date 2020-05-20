@@ -28,7 +28,13 @@ std::istream& read(std::istream &is, Person& person) {
 ### Exercise 7.11: Add constructors to your Sales_data class and write a program to use each of the constructors.
 
 ```cpp
+ // if we want the default behavior, we can ask the compiler
+// to generate the constructor for us by writing = default after the parameter list.
 Sales_data() = default;
+// When a member is omitted from the constructor initializer list, it is implicitly initialized
+// using the same process as is used by the synthesized default constructor. is equivalent to
+// Sales_data(const std::string &s):
+//             bookNo(s), units_sold(0), revenue(0){ }
 Sales_data(const std::string& s): bookNo(s) {}
 Sales_data(const std::string& s, unsigned n, double p):
             bookNo(s), units_sold(n), revenue(p*n) {}
