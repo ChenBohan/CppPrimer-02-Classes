@@ -48,3 +48,15 @@ while (is) {
     Sales_data trans(is);
     ...
 ```
+
+### Exercise 7.17: What, if any, are the differences between using class or struct?
+
+- The only difference between using class and using struct to define a class is the default access level. (class : private, struct : public)
+
+### Exercise 7.18: What is encapsulation? Why is it useful?
+
+- encapsulation
+    - encapsulation is the separation of implementation from interface. It hides the implementation details of a type. (In C++, encapsulation is enforced by putting the implementation in the private part of a class)
+- Important advantages
+    - User code cannot inadvertently corrupt the state of an encapsulation object.
+    - The implementation of an encapsulated class can change over time without requiring changes in user-level code.
