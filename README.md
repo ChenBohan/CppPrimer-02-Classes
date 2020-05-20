@@ -106,6 +106,8 @@ using pos = std::string::size_type;
 - member functions defined inside the class are automatically inline
 - Although we are not required to do so, it is legal to specify inline on both the
 declaration and the definition. specifying inline only on the definition outside the class can make the class easier to read.
+- For the same reasons that we define inline functions in headers inline member functions should be defined in the same header as the corresponding class definition.
+
 
 ```cpp
 inline double avg_price() const;
