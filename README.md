@@ -40,4 +40,11 @@ Sales_data(const std::string& s, unsigned n, double p):
             bookNo(s), units_sold(n), revenue(p*n) {}
 Sales_data(std::istream& is);
 ```
+### Exercise 7.13: Rewrite the program from page 255 to use the istream constructor.
 
+```cpp
+std::istream &is = std::cin;
+while (is) {
+    Sales_data trans(is);
+    ...
+```
