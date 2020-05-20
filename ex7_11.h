@@ -12,7 +12,12 @@ struct Sales_data {
     unsigned units_sold = 0;
     double revenue = 0.0;
 
+    // needed because Sales_data has another constructor
     Sales_data() = default;
+    // When a member is omitted from the constructor initializer list, it is implicitly initialized
+    // using the same process as is used by the synthesized default constructor, which is equivalent to
+    // Sales_data(const std::string &s):
+    //            bookNo(s), units_sold(0), revenue(0){ }
     Sales_data(const std::string& s): bookNo(s) {}
     Sales_data(const std::string& s, unsigned n, double p):
                 bookNo(s), units_sold(n), revenue(p*n) {}
