@@ -117,3 +117,7 @@ inline double Sales_data::avg_price() const
     return units_sold ? revenue/units_sold : 0;
 }
 ```
+
+### Exercise 7.28: What would happen in the previous exercise if the return type of move , set, and display was Screen rather than Screen&?
+
+The second call to `display` couldn't print # among the output, cause the call to `set` would change the temporary copy, not myScreen.
