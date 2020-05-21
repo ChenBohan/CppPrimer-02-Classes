@@ -121,3 +121,20 @@ inline double Sales_data::avg_price() const
 ### Exercise 7.28: What would happen in the previous exercise if the return type of move , set, and display was Screen rather than Screen&?
 
 The second call to `display` couldn't print # among the output, cause the call to `set` would change the temporary copy, not myScreen.
+
+### Exercise 7.30: It is legal but redundant to refer to members through the this pointer. Discuss the pros and cons of explicitly using the this pointer to access members.
+
+- Pros
+    - more explicit
+    - less scope for misreading
+    - can use the member function parameter which name is same as the member name.
+```cpp
+void setAddr(const std::string &addr) { this->addr = addr; }
+```
+
+- Cons
+    - more to read
+    - sometimes redundant
+```
+std::string getAddr() const { return this->addr; } // unnecessary
+```
