@@ -1,7 +1,7 @@
 # CppPrimer-02-Classes
 Solutions for Chapter 7.Classes exercises of C++ Primer 5th.
 
-### Exercise 7.2: Add the combine and isbn members to the Sales_data class you wrote for the exercises in § 2.6.2 (p.76).
+#### Exercise 7.2: Add the combine and isbn members to the Sales_data class you wrote for the exercises in § 2.6.2 (p.76).
 
 Any direct use of a member of the class is assumed to be an implicit reference through `this` .
 
@@ -13,7 +13,7 @@ Sales_data& Sales_data::combine(const Sales_data& rhs) {
 }
 ```
 
-### Exercise 7.9: Add operations to read and print Person objects to the code you wrote for the exercises in § 7.1.2 (p. 260).
+#### Exercise 7.9: Add operations to read and print Person objects to the code you wrote for the exercises in § 7.1.2 (p. 260).
 
 ```cpp
 std::ostream& print(std::ostream &os, const Person& person) {
@@ -25,7 +25,7 @@ std::istream& read(std::istream &is, Person& person) {
 }
 ```
 
-### Exercise 7.11: Add constructors to your Sales_data class and write a program to use each of the constructors.
+#### Exercise 7.11: Add constructors to your Sales_data class and write a program to use each of the constructors.
 
 ```cpp
 // needed because Sales_data has another constructor
@@ -39,7 +39,7 @@ Sales_data(const std::string& s, unsigned n, double p):
             bookNo(s), units_sold(n), revenue(p*n) {}
 Sales_data(std::istream& is);
 ```
-### Exercise 7.13: Rewrite the program from page 255 to use the istream constructor.
+#### Exercise 7.13: Rewrite the program from page 255 to use the istream constructor.
 
 ```cpp
 std::istream &is = std::cin;
@@ -48,11 +48,11 @@ while (is) {
     ...
 ```
 
-### Exercise 7.17: What, if any, are the differences between using class or struct?
+#### Exercise 7.17: What, if any, are the differences between using class or struct?
 
 - The only difference between using class and using struct to define a class is the default access level. (class : private, struct : public)
 
-### Exercise 7.18: What is encapsulation? Why is it useful?
+#### Exercise 7.18: What is encapsulation? Why is it useful?
 
 - encapsulation
     - encapsulation is the separation of implementation from interface. It hides the implementation details of a type. (In C++, encapsulation is enforced by putting the implementation in the private part of a class)
@@ -60,8 +60,8 @@ while (is) {
     - User code cannot inadvertently corrupt the state of an encapsulation object.
     - The implementation of an encapsulated class can change over time without requiring changes in user-level code.
 
-### Exercise 7.20: When are friends useful? Discuss the pros and cons of using friends.
-
+#### Exercise 7.20: When are friends useful? Discuss the pros and cons of using friends.
+h__bmw_
 - `Friend` is a mechanism by which a class grants access to its nonpublic members. They have the same rights as members.
     - Pros:
         - the useful functions can refer to class members in the class scope without needing to explicitly prefix them with the class name.
@@ -71,7 +71,7 @@ while (is) {
         - lessens encapsulation and therefore maintainability.
         - code verbosity, declarations inside the class, outside the class.
 
-### Exercise 7.21: Update your Sales_data class to hide its implementation. The programs you’ve written to use Sales_data operations should still continue to work.
+#### Exercise 7.21: Update your Sales_data class to hide its implementation. The programs you’ve written to use Sales_data operations should still continue to work.
 
 ```cpp
 
@@ -85,7 +85,7 @@ class Sales_data {
 }
 ```
 
-### Exercise 7.23: Write your own version of the Screen class.
+#### Exercise 7.23: Write your own version of the Screen class.
 
 ```cpp
 // type members usually appear at the beginning of the class.
@@ -93,7 +93,7 @@ class Sales_data {
 using pos = std::string::size_type;
 ```
 
-### Exercise 7.25: Can Screen safely rely on the default versions of copy and assignment? If so, why? If not, why not?
+#### Exercise 7.25: Can Screen safely rely on the default versions of copy and assignment? If so, why? If not, why not?
 
 - synthesized version work correctly
     - for classes that have vector or string members.
@@ -101,7 +101,7 @@ using pos = std::string::size_type;
     - for classes that allocate resources that reside outside the class objects themselves.
 - Hence the class below which used only built-in type and strings can rely on the default version of copy and assignment.
 
-### Exercise 7.26: Define Sales_data::avg_price as an inline function.
+#### Exercise 7.26: Define Sales_data::avg_price as an inline function.
 
 - member functions defined inside the class are automatically inline
 - Although we are not required to do so, it is legal to specify inline on both the
@@ -118,11 +118,11 @@ inline double Sales_data::avg_price() const
 }
 ```
 
-### Exercise 7.28: What would happen in the previous exercise if the return type of move , set, and display was Screen rather than Screen&?
+#### Exercise 7.28: What would happen in the previous exercise if the return type of move , set, and display was Screen rather than Screen&?
 
 The second call to `display` couldn't print # among the output, cause the call to `set` would change the temporary copy, not myScreen.
 
-### Exercise 7.30: It is legal but redundant to refer to members through the this pointer. Discuss the pros and cons of explicitly using the this pointer to access members.
+#### Exercise 7.30: It is legal but redundant to refer to members through the this pointer. Discuss the pros and cons of explicitly using the this pointer to access members.
 
 - Pros
     - more explicit
@@ -139,7 +139,7 @@ void setAddr(const std::string &addr) { this->addr = addr; }
 std::string getAddr() const { return this->addr; } // unnecessary
 ```
 
-### Exercise 7.31: Define a pair of classes X and Y, in which X has a pointer to Y, and Y has an object of type X .
+#### Exercise 7.31: Define a pair of classes X and Y, in which X has a pointer to Y, and Y has an object of type X .
 
 ```cpp
 // After a declaration and before a definition is seen, the type Screen is an incomplete type
@@ -155,3 +155,16 @@ class Y {
     X x;
 };
 ```
+
+#### Exercise 7.36: The following initializer is in error. I dentify and fix the problem.
+```cpp
+struct X {
+    X (int i, int j): base(i), rem(base % j) { }
+    int rem, base;
+};
+```
+- In this case, the constructor initializer makes it appear as if `base` is initialized with `i` and then `base` is used to initialize `rem`. However, `rem` is initialized first. The effect of this initializer is to initialize `rem` with the undefined value of `base`!
+- Members are initialized in the order in which they appear in the class definition. The order in which initializers appear in the constructor initializer list does not change the order of initialization.
+- It is a good idea to write constructor initializers in the same order as the members are declared. Moreover, when possible, avoid using members to initialize other members.
+
+
