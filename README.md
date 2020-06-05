@@ -167,4 +167,41 @@ struct X {
 - Members are initialized in the order in which they appear in the class definition. The order in which initializers appear in the constructor initializer list does not change the order of initialization.
 - It is a good idea to write constructor initializers in the same order as the members are declared. Moreover, when possible, avoid using members to initialize other members.
 
+fixed:
 
+```cpp
+struct X {
+  X (int i, int j): base(i), rem(i % j) { }
+  int base, rem;
+};
+```
+
+#### Exercise 7.38: We might want to supply `cin` as a default argument to the constructor that takes an istream& . Write the constructor declaration that uses `cin` as a default argument.
+
+```cpp
+Sales_data(std::istream &is = std::cin) { read(is, *this); }
+```
+
+#### Exercise 7.39: Would it be legal for both the constructor that takes a string and the one that takes an istream& to have default arguments? If not, why not ?
+
+illegal. cause the call of overloaded `Sales_data()` is ambiguous.
+
+#### Exercise 7.40: Determine what data are needed in the `Book` class. Provide an appropriate set of constructors. 
+
+```
+class Book  {
+public:
+    Book(unsigned isbn, std::string const& name, std::string const& author, std::string const& pubdate)
+        :isbn_(isbn), name_(name), author_(author), pubdate_(pubdate) { }
+        
+    explicit Book(std::istream &in) { 
+        in >> isbn_ >> name_ >> author_ >> pubdate_;
+    }
+
+private:
+    unsigned isbn_;
+    std::string name_;
+    std::string author_;
+    std::string pubdate_;
+};
+```
