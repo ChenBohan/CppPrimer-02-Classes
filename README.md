@@ -205,3 +205,17 @@ private:
     std::string pubdate_;
 };
 ```
+
+#### Exercise 7.41: Rewrite your own version of the Sales_data class to use delegating constructors.
+
+-  A delegating constructor uses another constructor from its own class to perform its initialization. 
+
+```cpp
+class Sales_data {
+public:
+    Sales_data(const std::string &s, unsigned n, double p):bookNo(s), units_sold(n), revenue(n*p) {}
+    Sales_data() : Sales_data("", 0, 0.0f) {}
+    Sales_data(const std::string &s) : Sales_data(s, 0, 0.0f) {}
+    Sales_data(std::istream &is);
+}
+```
