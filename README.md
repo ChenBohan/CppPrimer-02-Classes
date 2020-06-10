@@ -233,6 +233,6 @@ public:
 - (b) A default constructor is a constructor with an empty parameter list.
     - 不正确；如果构造函数的参数都有默认实参，则等效的定义了默认构造函数
 - (c) If there are no meaningful default values for a class, the class should not provide a default constructor.
-    - untrue, If there is no meaningful default value for a class, the class should not provide a default constructor.
+    - Is wrong, because if a class does not have a default constructor, that is, we define some constructors of the class but do not design a default constructor for it, the class cannot be used when the compiler does need to implicitly use the default constructor. So in general, you should build a default constructor for your class.
 - (d) If a class does not define a default constructor, the compiler generates one that initializes each data member to the default value of its associated type.
     - untrue, only if our class does not explicitly define any constructors, the compiler will implicitly define the default constructor for us.
