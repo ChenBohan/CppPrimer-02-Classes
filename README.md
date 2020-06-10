@@ -219,3 +219,20 @@ public:
     Sales_data(std::istream &is);
 }
 ```
+
+#### Exercise 7.44: I s the following declaration legal? If not, why not ?
+
+`vector<NoDefault> vec(10);`
+
+- 不合法，在上面的调用中，因为没有提供对象初始值，vector构造函数使用NoDefault的构造函数来初始化容器中的元素，但是Nodefault没有定义默认构造函数
+- `std::vector<NoDefault> ivec(5, NoDefault(1));` 像这样，如果提供了初值就没有问题了。
+
+#### Exercise 7.46: Which, if any, of the following statements are untrue? Why?
+- (a) A class must provide at least one constructor.
+    - 不正确；如果没有提供，编译器会合成默认构造函数
+- (b) A default constructor is a constructor with an empty parameter list.
+    - 不正确；如果构造函数的参数都有默认实参，则等效的定义了默认构造函数
+- (c) If there are no meaningful default values for a class, the class should not provide a default constructor.
+    - untrue, If there is no meaningful default value for a class, the class should not provide a default constructor.
+- (d) If a class does not define a default constructor, the compiler generates one that initializes each data member to the default value of its associated type.
+    - untrue, only if our class does not explicitly define any constructors, the compiler will implicitly define the default constructor for us.
