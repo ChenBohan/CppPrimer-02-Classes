@@ -289,7 +289,7 @@ struct Sales_data {
 
 #### Exercise 7.57: Write your own version of the Account class.
 
-```c
+```cpp
 class Account {
 public:
     void calculate() { amount += amount * interestRate; }
