@@ -236,3 +236,21 @@ public:
     - Is wrong, because if a class does not have a default constructor, that is, we define some constructors of the class but do not design a default constructor for it, the class cannot be used when the compiler does need to implicitly use the default constructor. So in general, you should build a default constructor for your class.
 - (d) If a class does not define a default constructor, the compiler generates one that initializes each data member to the default value of its associated type.
     - untrue, only if our class does not explicitly define any constructors, the compiler will implicitly define the default constructor for us.
+
+#### Exercise 7.47: Explain whether the `Sales_data` constructor that takes a `string` should be `explicit`. What are the benefits of making the constructor `explicit`? What are the drawbacks?
+
+- Whether the conversion of a string to Sales_data is desired depends on how we think our users will use the conversion. In this case, it might be okay. The string in null_book probably represents a nonexistent ISBN.
+- benefits: 好处就是类型转换自动发生，在需要Sales_data的地方，可以提供一个string
+- drawbacks: 坏处就是容易用错，不合法的string意外的转换为了Sales_data
+
+#### Exercise 7.49: For each of the three following declarations of combine, explain what happens if we call i.combine(s) , where `i` is a `Sales_data` and `s` is a `string`:
+```cpp
+(a) Sales_data &combine(Sales_data);
+(b) Sales_data &combine(Sales_data&);
+(c) Sales_data &combine(const Sales_data&) const;
+```
+- (a) Yes, the compiler first creates a sales data object with the given string object s, and then the newly generated temporary object is passed to the formal parameter of combine (the type is sales data). The function executes correctly and returns the result.
+- (b) Unable to compile because the parameter of the combine function is a non constant reference, and S is a string object. The compiler uses s to automatically create a temporary object of sales & data, but the newly generated temporary object cannot be passed to the non constant reference required by the combine. If we change the function declaration to Sales_data & combine (const Sales_data &); then we can.
+- (c) Unable to compile because we declared the combine as a constant member function, so the function cannot modify the value of the data member.
+
+
