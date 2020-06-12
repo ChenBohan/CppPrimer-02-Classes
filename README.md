@@ -253,4 +253,26 @@ public:
 - (b) Unable to compile because the parameter of the combine function is a non constant reference, and S is a string object. The compiler uses s to automatically create a temporary object of sales & data, but the newly generated temporary object cannot be passed to the non constant reference required by the combine. If we change the function declaration to Sales_data & combine (const Sales_data &); then we can.
 - (c) Unable to compile because we declared the combine as a constant member function, so the function cannot modify the value of the data member.
 
+#### Exercise 7.52: Using our first version of Sales_data from § 2.6.1 (p. 72), explain the following initialization. I dentify and fix any problems.
+
+```cpp
+Sales_data item = {"978-0590353403", 25, 15.99};
+```
+- A class is an aggregate if
+    - All of its data members are public
+    - It does not define any constructors
+    - It has no in-class initializers
+    - It has no base classes or virtual functions
+    
+FIXED:
+
+The data members units "sold" and "revenue" both contain in class initial value. As long as the initial values in these two classes are removed, the program can run normally.
+
+```cpp
+struct Sales_data {
+    std::string bookNo;
+    unsigned units_sold;
+    double revenue;
+};
+```
 
