@@ -276,3 +276,44 @@ struct Sales_data {
 };
 ```
 
+#### Exercise 7.56: What is a static class member? What are the advantages of static members? How do they differ from ordinary members?
+
+- What?
+    - A class member that is associated with the class, rather than with individual objects of the class type.
+- Advantages
+    - Each object can no need to store a common data. 
+    - If the data is changed, each object can use the new value.
+- Difference
+    - a static data member can have incomplete type.
+    - can use a static member as a default argument.
+
+#### Exercise 7.57: Write your own version of the Account class.
+
+```
+class Account {
+public:
+    void calculate() { amount += amount * interestRate; }
+    static double rate() { return interestRate; }
+    static void rate(double newRate) { interestRate = newRate; }
+
+private:
+    std::string owner;
+    double amount;
+    // static members exist outside any object.
+    static double interestRate;
+    // we can provide in-class initializers for static members that have const integral
+    // type and must do so for static members that are constexpr s of literal type
+    static constexpr double todayRate = 42.42;
+    // static member functions are not bound to any object
+    // we can define a static member function inside or outside of the class body.
+    //     When we define a static member outside the class, we do not repeat the static keyword.
+    static double initRate() { return todayRate; }
+};
+
+// static members are not initialized by the class’ constructors.
+// we can define and initialize each static data member outside the class body
+// The best way to ensure that the object is defined exactly once is to put the
+//     definition of static data members in the same file
+double Account::interestRate = initRate();
+```
+
